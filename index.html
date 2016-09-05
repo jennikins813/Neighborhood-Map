@@ -1,35 +1,33 @@
-# Project: Neighborhood Map
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>NeighborhoodMap</title>
+		<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> -->
+		<style>
+			body {font-family: Arial, sans-serif; background-color: #3cb371; color: #fff5ee; height: 100%; margin: 0; padding: 20px;}
+			#map {width: 100%; height: 500px; background-color: #20b2aa}
+		</style>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.0/knockout-min.js"></script>
+	</head>
+	<body>
+		<h1>Friendship, Food, and Coffee</h1>
+		<p>Try these places the next time you're looking for an amazing place to catch up with old friends over brunch, or over coffee</p>
 
-This is the final project of the Udacity FEND Nanodegree. The challenge is to build a functional neighborhood map, using Google Map API, plus another API of my choice. For this project I chose to use Flickr API to attach images to the selected locations on the map.
-My map is a guide to find a place where you can meet and catch up with friends over coffee, or grab delicious finds a some amazing brunch spots in Los Angeles. Click on one of the markers on the map for a sneak peak of what to find at these locations.
+		<!-- TODO: search and/or filter locations -->
+		<!-- <input id="pac-input" class="controls" type="text" placeholder="Search Box"> -->
+		<div id="locList"></div>
 
-## Getting Started
-Review the Online Resume [Project Rubric](https://review.udacity.com/?_ga=1.189245867.12280332.1465333852#!/projects/2962818615/rubric).
+		<p>Locations: <span data-bind="text: this.defaultLocations"></span></p>
+		
+		<div id="map"></div>
 
-## Getting started
-
-You can visit the live demo [here](https://jennikins813.github.io/Neighborhood-Map/).
-
-You can download this repo and open index.html in your browser.
-
-#### APIs Used:
-1. [Google Maps](https://developers.google.com/maps/?authuser=1)
-2. [Flickr](https://www.flickr.com/services/api/)
-
-
-## How to Use this App
-The page will first load with a map centered in Downtown Los Angeles, with several markers places around the area.
-
-Clicking on a marker will display an info window that shows an image related to the selected location, and the location/establishment's name.
-
-## Resources
-A list of some helpful resources:
-
-http://stackoverflow.com/questions/8228281/what-is-the-function-construct-in-javascript
-http://stackoverflow.com/questions/5815757/why-is-this-function-wrapped-in-parentheses-followed-by-parentheses
-http://benalman.com/news/2010/11/immediately-invoked-function-expression/
-
-## To Dos:
-* Filter and/or search locations functionality
-* Improve knockout.js
-* Error handling
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.0/knockout-min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+		<script type="text/javascript" src="js/main.js"></script>		
+		<script async defer
+			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB6rVP8hdeJ_O6agpvFZaco_YTlpmKmUeI&v=3&callback=initMap&libraries=places">
+		</script>
+	</body>
+</html>
