@@ -4,7 +4,7 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>NeighborhoodMap</title>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+		<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> -->
 		<style>
 			body {font-family: Arial, sans-serif; height: 100%; margin: 0; padding: 20px;}
 			#map {width: 100%; height: 500px; background-color: green}
@@ -12,114 +12,20 @@
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.0/knockout-min.js"></script>
 	</head>
 	<body>
-		<h1>Neighborhood Map</h1>
-		<input id="pac-input" class="controls" type="text" placeholder="Search Box">
+		<h1>Friendship, Food, and Coffee</h1>
+		<p>Try these places the next time you're looking for an amazing place to catch up with old friends over brunch, or over coffee</p>
+
+		<!-- TODO: search and/or filter locations -->
+		<!-- <input id="pac-input" class="controls" type="text" placeholder="Search Box"> -->
 		<div id="locList"></div>
 
-		<!-- <p>Locations: <input data-bind="text: str"/></p> -->
-		<div data-bind="text: str"></div>
+		<p>Locations: <span data-bind="text: this.defaultLocations"></span></p>
+		
 		<div id="map"></div>
 
-		
-		<!-- <script type="text/javascript" src="js/main.js"></script> -->
-		<script>
-				function MyApp() {
-					this.defaultLocations = ko.observableArray[{
-						name: "Bottega Louie",
-						tags: "bottega louie",
-						position: {lat: 34.046932, lng: -118.256681}
-					}, {
-						name: "Urth Caffé",
-						tags: "urth caffe",
-						position: {lat: 34.041974, lng: -118.235426}
-					}, {
-						name: "The Pie Hole",
-						tags: "the pie hole",
-						position: {lat: 34.045384, lng: -118.236254}
-					}, {
-						name: "Groundwork Coffee Co.",
-						tags: "Coffeehouse",
-						position: {lat: 34.050838, lng: -118.244886}
-					}, {
-						name: "Pitchon Bakery and Cafe",
-						tags: "french bakery",
-						position: {lat: 34.048577, lng: -118.254111}
-					}, {
-						name: "Tierra Mia Coffee",
-						tags: "tierra mia coffee",
-						position: {lat: 34.07825, lng: -118.262891}
-					}, {
-						name: "Larchmont Bungalow",
-						tags: "red velvet pancakes",
-						position: {lat: 34.073184, lng: -118.324013}
-					}];
-
-					this.str = ko.observable("KO");
-
-			 		this.showMarkers = ko.computed(function showMarkers() {
-			        			var flickerAPI = "https://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?";
-			        			console.log(app.defaultLocations);
-			        // 			for (var i = 0; i < app.defaultLocations.length; i++) {
-			        // 				console.log('inside showmarkers');
-			        // 				var marker = new google.maps.Marker({
-			        // 					position: defaultLocations[i].position,
-			        // 					map: map,
-			        // 				});
-
-			        // 				// Immediately-Invoked function expression(iife): function is
-			        // 				// executed immediately after the completion of the definition.
-			        // 				(function(mapSame, markerSame, flickr, iLoc) {
-			        // 					function addMarker() {
-			        // 						$.getJSON( flickerAPI, {
-											//    tags: defaultLocations[iLoc].tags,
-											//    tagmode: "any",
-											//    format: "json"
-											// })
-											//    .done(function( data ) {
-											// 	   // var imageStr = null;
-											// 	   var img = data.items[2].media.m
-											//     	var imageStr = '<img src="' + img + '">';
-											// 	   var infoWindow = new google.maps.InfoWindow({
-											// 			content: imageStr + '<br>' + defaultLocations[iLoc].name
-											// 		});
-											// 		markerSame.addListener('click', function() {
-											// 			infoWindow.open(mapSame, markerSame);
-											// 		});
-											// 	});
-											
-			        // 					}
-			        // 					return addMarker();
-			        // 				})(map, marker, flickerAPI, i);        				
-			        // 			}	
-			    			});
-			    			showMarkers();
-		    			// );
-
-				}
-
-				ko.applyBindings(new MyApp());
-
-
-	      	var map;
-	      	// var infowindow;
-	      	// console.log(app)
-	      	// Initialize Google Map
-	      	function initMap() {
-		        	var dtla = {lat: 34.040713, lng: -118.246769};
-
-		        	map = new google.maps.Map(document.getElementById('map'), {
-		          		center: dtla,
-		          		zoom: 12
-		        	});
-		        	// console.log(app);
-
-	      	}
-
-
-		</script>
-
-
-		
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.0/knockout-min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+		<script type="text/javascript" src="js/main.js"></script>		
 		<script async defer
 			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB6rVP8hdeJ_O6agpvFZaco_YTlpmKmUeI&v=3&callback=initMap&libraries=places">
 		</script>
