@@ -28,8 +28,3 @@ A list of some helpful resources:
 http://stackoverflow.com/questions/8228281/what-is-the-function-construct-in-javascript
 http://stackoverflow.com/questions/5815757/why-is-this-function-wrapped-in-parentheses-followed-by-parentheses
 http://benalman.com/news/2010/11/immediately-invoked-function-expression/
-
-## To Dos:
-* Filter and/or search locations functionality
-* Improve knockout.js
-* Error handling
