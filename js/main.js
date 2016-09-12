@@ -39,7 +39,7 @@ function MyApp() {
             })
 
             .done(function(data) {
-                var img = data.items[2].media.m
+                var img = data.items[2].media.m;
                 var imageStr = '<img src="' + img + '">';
                 var infoWindow = new google.maps.InfoWindow({
                     content: imageStr + '<br><span class="b-name">' + that.defaultLocations()[iSame].name + '</span>'
@@ -60,9 +60,6 @@ function MyApp() {
                     }
                 }
 
-                // set values to specific index in array, instead of 'pushing'
-                // that.infoWindows()[iSame] = infoWindow;
-                // that.markers()[iSame] = markerSame;
                 that.infoWindows.push(infoWindow);
                 that.markers.push(markerSame);
                 that.openMarkersFromList.push(markerSame);
@@ -168,7 +165,7 @@ function MyApp() {
             // executed immediately after the completion of the definition.
             (function(mapSame, markerSame, iSame) {
                 infoWindowsFlickr(mapSame, markerSame, iSame);
-            })(map, marker, i)
+            })(map, marker, i);
         }
     });
 
@@ -272,12 +269,12 @@ function MyApp() {
             that.openMarkersFromList.push(marker);
             that.openInfoWindowsFromList.push(infoWindow);
             infoWindow.open(map, marker);
-        })  
+        });  
     };
 
     this.showAll = function() {
         var userLoc = null;
         document.getElementById('userLoc').value = '';
         that.search(userLoc);
-    }
+    };
 }
