@@ -21,11 +21,11 @@ function initMap() {
         ko.applyBindings(new MyApp());
     });
 }
+//Error handling function that alerts user if Google Map scripts cannot be loaded
 function googleError() {
-    alert("Failed to load Google Maps. Please try again later");
-    
-};
-    
+    alert("Failed to load Google Maps. Please try again later");  
+}
+
 function MyApp() {
     var that = this;
     var flickerAPI = "https://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?";
@@ -74,7 +74,7 @@ function MyApp() {
             })
 
             .fail(function(jqXHR, textStatus, errorThrown) {
-                console.log("req failed");
+                $('#locList').html("<h3>Request for Flickr resources failed. Please try again later.</h3>");
                 console.log('textStatus: ', textStatus, " code: ", jqXHR.status);
             });
         }
@@ -261,7 +261,7 @@ function MyApp() {
             that.openMarkersFromList.push(marker);
             that.openInfoWindowsFromList.push(infoWindow);
             infoWindow.open(map, marker);
-        });  
+        }); 
     };
 
     this.showAll = function() {
