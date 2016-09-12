@@ -12,8 +12,8 @@
 			#map .b-name {color: #666;}
 			#map {height: 100%}
 		</style>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.0/knockout-min.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.0/knockout-min.js"></script>
 	</head>
 	<body>
 		<div id="header">
@@ -35,11 +35,10 @@
 		
 		<div id="map"></div>
 
-		<!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.0/knockout-min.js"></script> -->
+		<script src="js/main.js"></script>
 		<script async defer
-			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB6rVP8hdeJ_O6agpvFZaco_YTlpmKmUeI&v=3&callback=initMap&libraries=places">
+			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB6rVP8hdeJ_O6agpvFZaco_YTlpmKmUeI&v=3&callback=initMap&libraries=places" onerror="googleError()">
 		</script>
-		<script type="text/javascript" src="js/main.js"></script>		
 
 	</body>
 </html>

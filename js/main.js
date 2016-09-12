@@ -21,7 +21,11 @@ function initMap() {
         ko.applyBindings(new MyApp());
     });
 }
-
+function googleError() {
+    alert("Failed to load Google Maps. Please try again later");
+    
+};
+    
 function MyApp() {
     var that = this;
     var flickerAPI = "https://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?";
@@ -187,7 +191,6 @@ function MyApp() {
         });
         that.openMarkersFromList.removeAll();
 
-        // console.log(that.userLoc());
         if (that.userLoc() === null || _userLoc === null) {
             console.log('user input blank');
             that.defaultLocations.removeAll();
@@ -211,9 +214,6 @@ function MyApp() {
             });
             that.openMarkersFromList.removeAll();
 
-            // console.log(that.defaultLocations());
-            // console.log(that.markers());
-
             for (var k = 0; k < that.defaultLocationsTemp().length; k++) {
                 // console.log(that.defaultLocationsTemp());
                 var nameLowercase = that.defaultLocationsTemp()[k].name.toLowerCase();
@@ -228,7 +228,6 @@ function MyApp() {
                     }
                 })(nameLowercase, k);
             }
-            // console.log(that.defaultLocations());            
         }
 
     };
