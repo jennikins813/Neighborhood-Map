@@ -211,9 +211,8 @@ function MyApp() {
             });
             that.openMarkersFromList.removeAll();
 
-            // that.markers = ko.observableArray(null);
-            console.log(that.defaultLocations());
-            console.log(that.markers());
+            // console.log(that.defaultLocations());
+            // console.log(that.markers());
 
             for (var k = 0; k < that.defaultLocationsTemp().length; k++) {
                 // console.log(that.defaultLocationsTemp());
@@ -256,14 +255,8 @@ function MyApp() {
                 content: imageStr + '<br><span class="b-name">' + place.name + '</span>'
             });
 
-            // that.openInfoWindowsFromList().forEach(function(val, idx, arr) {
-            //  that.openInfoWindowsFromList()[idx].close();
-            // });
             that.openInfoWindowsFromList.removeAll();
 
-            // that.openMarkersFromList().forEach(function(val, idx, arr) {
-            //  that.openMarkersFromList()[idx].setMap(null);
-            // });
             that.openMarkersFromList.removeAll();
 
             that.openMarkersFromList.push(marker);
