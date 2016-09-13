@@ -1,4 +1,4 @@
-var map = null;
+var map;
 
 // Initialize Google Map
 function initMap() {
@@ -7,11 +7,10 @@ function initMap() {
         lng: -118.246769
     };
 
-    // console.log(google);
     function setMap(callback) {
         map = new google.maps.Map(document.getElementById('map'), {
             center: dtla,
-            zoom: 12
+            zoom: 13
         });
 
         callback();
@@ -23,7 +22,7 @@ function initMap() {
 }
 //Error handling function that alerts user if Google Map scripts cannot be loaded
 function googleError() {
-    alert("Failed to load Google Maps. Please try again later");  
+    alert(" ⛔❗Failed to load Google Maps. Please try again later");
 }
 
 function MyApp() {
@@ -32,10 +31,7 @@ function MyApp() {
 
     var infoWindowsFlickr = function(mapSame, markerSame, iSame) {
         function addMarker() {
-            // console.log(that.defaultLocations());
             console.log(that.defaultLocations()[iSame]);
-            // console.log(iSame);
-            // console.log(markerSame);
             $.getJSON(flickerAPI, {
                 tags: that.defaultLocations()[iSame].tags,
                 tagmode: "any",
@@ -50,7 +46,8 @@ function MyApp() {
                 });
 
                 function toggleBounce() {
-                    for (var j = 0; j < that.markers().length; j++) {
+                    var markerLength = that.markers().length;
+                    for (var j = 0; j < markerLength; j++) {
                         // console.log(that.infoWindows()[j]);
                         that.infoWindows()[j].close();
                         that.markers()[j].setAnimation(null);
@@ -69,12 +66,11 @@ function MyApp() {
                 that.openMarkersFromList.push(markerSame);
                 that.openInfoWindowsFromList.push(infoWindow);
 
-                // console.log(that.infoWindows());
                 markerSame.addListener('click', toggleBounce);
             })
 
             .fail(function(jqXHR, textStatus, errorThrown) {
-                $('#locList').html("<h3>Request for Flickr resources failed. Please try again later.</h3>");
+                $('#locList').html("<h3> ⛔✋Request for Flickr resources failed. Please try again later</h3>");
                 console.log('textStatus: ', textStatus, " code: ", jqXHR.status);
             });
         }
@@ -83,7 +79,7 @@ function MyApp() {
     };
 
     // Model (data)
-    this.defaultLocations = ko.observableArray([{
+    that.defaultLocations = ko.observableArray([{
         name: "Bottega Louie",
         tags: "bottega louie",
         position: { lat: 34.046932, lng: -118.256681 }
@@ -155,9 +151,9 @@ function MyApp() {
     // ViewModel (methods)
     // Markers are set on locations when map is loaded
     this.showMarkers = ko.computed(function() {
-        console.log('hi');
-
-        for (var i = 0; i < that.defaultLocations().length; i++) {
+        // console.log('hi');
+        var locLength = that.defaultLocations().length;
+        for (var i = 0; i < locLength; i++) {
             var marker = new google.maps.Marker({
                 position: that.defaultLocations()[i].position,
                 animation: google.maps.Animation.DROP,
@@ -229,7 +225,6 @@ function MyApp() {
                 })(nameLowercase, k);
             }
         }
-
     };
 
     this.openInfoWindow = function(place) {
@@ -239,7 +234,6 @@ function MyApp() {
             position: place.position,
             map: map
         });
-
 
         $.getJSON(flickerAPI, {
             tags: place.tags,
