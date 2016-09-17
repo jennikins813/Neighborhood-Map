@@ -9,27 +9,27 @@
 			html, body {font-family: Arial, sans-serif; background-color: #3cb371; color: #fff5ee; height: 100%; margin: 0; padding: 0;}
 			#header {padding: 20px;}
 			#locList {padding: 0 0 10px 20px;}
-			#map .b-name {color: #666;}
 			#map {height: 100%}
+			.infowindow-content {color: #808080;}
 		</style>
-		<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.0/knockout-min.js"></script>
 	</head>
 	<body>
 		<div id="header">
-		<h1>Friendship, Food, and Coffee</h1>
-		<p>Try these places the next time you're looking for an amazing place to catch up with old friends over brunch, or over coffee</p>
+			<h1>Friendship, Food, and Coffee</h1>
+			<p>Try these places the next time you're looking for an amazing place to catch up with old friends over brunch, or over coffee</p>
 		</div>
 
 		<div id="locList">
-			<p>Locations:</p>
+			<h3>Locations:</h3>
 			<form data-bind="submit: search">
-				<input type="text" data-bind="value: userLoc" id="userLoc">
+				<input type="text" data-bind="value: userLoc" id="userLoc" autofocus="on" autocomplete="on" placeholder="Enter keyword">
 				<button type="submit">Search</button>
 				<button type="button" data-bind="event: { click: $root.showAll }">Show All</button>
 			</form>
-			<ul class="d-list" data-bind="foreach: defaultLocations">
-				<li data-bind="text: name, event: { click: $parent.openInfoWindow }"></li>
+			<ul class="d-list" data-bind="foreach: markersArray">
+				<li data-bind="style: { display: $data.display ? 'list-item' : 'none'}"><span data-bind="text: $data.title, event: { click: $parent.openInfoWindow }"></span></li>
 			</ul>
 		</div>
 		
