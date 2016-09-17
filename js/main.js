@@ -13,7 +13,6 @@ function initMap() {
             center: dtla,
             zoom: 13
         });
-        console.log('1');
 
         callback();
     }
@@ -31,7 +30,6 @@ function googleError() {
 
 function MyApp(locationsArray) {
     var that = this;
-    console.log('2');
 
     // Model (data)
     that.defaultLocations = [{
@@ -77,8 +75,6 @@ function MyApp(locationsArray) {
 
     // ViewModel (methods)
     this.openInfoWindow = function(_marker) {
-        // console.log('infowindow open');
-        // console.log('_marker:', _marker.title);
         var image = that.flickrImagesObj[_marker.title];
 
         if (that.infowin != null) {
@@ -98,6 +94,7 @@ function MyApp(locationsArray) {
 
     // https://developers.google.com/maps/documentation/javascript/examples/event-closure
     // http://stackoverflow.com/questions/5868903/marker-content-infowindow-google-maps
+    
     // fill markers array
     this.defaultLocations.forEach(function(val, idx, arr) {
         var marker = new google.maps.Marker({
@@ -116,7 +113,6 @@ function MyApp(locationsArray) {
         })
 
         .done(function(data) {
-            console.log(data);
 
             google.maps.event.addListener(marker, 'click', function() {
                 //close any windows that may still be open
@@ -138,15 +134,13 @@ function MyApp(locationsArray) {
             that.markersArrayPermanent.push(marker);
             that.flickrImagesObj[marker.title] = data.items[5].media.m;
         })
-        
+
         .fail(function(jqXHR, textStatus, errorThrown) {
             $('#locList').html('<h3>Request for Flickr resources failed. Please try again later.</h3>');
-            console.log('textStatus: ', textStatus, " code: ", jqXHR.status);
         });
     });
 
     this.showAll = function() {
-        console.log('show all');
 
         // Re-init markersArray by emptying it out, then push back all original
         // markers stored in markersArrayPermanent to create a fresh markersArray
@@ -161,8 +155,6 @@ function MyApp(locationsArray) {
             val.setMap(map);
             that.markersArray.push(val);
         });
-
-        console.log(that.markersArray());
     };
 
     this.search = function(_userLoc) {
@@ -185,14 +177,10 @@ function MyApp(locationsArray) {
             if (that.userLoc() === null || _userLoc === null) {
                 this.showAll();
             } else if (lowercaseMarkerTitle.indexOf(lowercaseUserInput) === -1) {
-                console.log(val.title);
-                console.log(that.userLoc().toLowerCase());
-                console.log('equals -1');
                 val.setMap(null);
                 val.display = false;
                 that.markersArrayTemp.push(val);
             } else {
-                console.log('continue through loop');
                 val.setMap(map);
                 val.display = true;
                 that.markersArrayTemp.push(val);
